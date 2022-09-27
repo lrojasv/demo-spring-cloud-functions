@@ -16,11 +16,10 @@
     <name>demo</name>
     <description>demo</description>
 
-
     <properties>
         <java.version>11</java.version>
-
-        <spring-cloud.version>2021.0.4</spring-cloud.version>
+       <!--  <spring-cloud-azure.version>4.3.0</spring-cloud-azure.version> -->
+		<spring-cloud.version>2021.0.4</spring-cloud.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <maven.compiler.source>11</maven.compiler.source>
@@ -37,7 +36,6 @@
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
         <start-class>com.example.demo.DemoApplication</start-class>
 
-        <version.spring.cloud.azure>4.3.0</version.spring.cloud.azure>
     </properties>
 
 
@@ -69,9 +67,21 @@
             <scope>test</scope>
         </dependency>
 
+       <!--  <dependency>
+			<groupId>com.azure.spring</groupId>
+			<artifactId>spring-cloud-azure-starter-keyvault</artifactId>
+		</dependency> -->
+
         <dependency>
-            <groupId>com.azure.spring</groupId>
-            <artifactId>spring-cloud-azure-starter-keyvault-secrets</artifactId>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-security-keyvault-secrets</artifactId>
+            <version>4.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-identity</artifactId>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
 
@@ -91,13 +101,13 @@
                 <version>${azure.functions.java.library.version}</version>
             </dependency>
 
-            <dependency>
-             <groupId>com.azure.spring</groupId>
-             <artifactId>spring-cloud-azure-dependencies</artifactId>
-             <version>${version.spring.cloud.azure}</version>
-             <type>pom</type>
-             <scope>import</scope>
-         </dependency>
+     <!--    <dependency>
+				<groupId>com.azure.spring</groupId>
+				<artifactId>spring-cloud-azure-dependencies</artifactId>
+				<version>${spring-cloud-azure.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency> -->
         </dependencies>
 
         
