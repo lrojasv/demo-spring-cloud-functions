@@ -30,12 +30,14 @@
         <azure.functions.maven.plugin.version>1.17.0</azure.functions.maven.plugin.version>
 
         <!-- customize those two properties. The functionAppName should be unique across Azure -->
-        <functionResourceGroup>rgmcrdemo</functionResourceGroup>
-        <functionAppName>mcr-function-demo</functionAppName>
-        <functionAppRegion>eastus</functionAppRegion>
+        <functionResourceGroup>lrojastest</functionResourceGroup>
+        <functionAppName>lrojastest-funcjava</functionAppName>
+        <functionAppRegion>eastus2</functionAppRegion>
 
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
         <start-class>com.example.demo.DemoApplication</start-class>
+
+        <version.spring.cloud.azure>4.3.0</version.spring.cloud.azure>
     </properties>
 
 
@@ -66,6 +68,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.azure.spring</groupId>
+            <artifactId>spring-cloud-azure-starter-keyvault-secrets</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -83,7 +90,17 @@
                 <artifactId>azure-functions-java-library</artifactId>
                 <version>${azure.functions.java.library.version}</version>
             </dependency>
+
+            <dependency>
+             <groupId>com.azure.spring</groupId>
+             <artifactId>spring-cloud-azure-dependencies</artifactId>
+             <version>${version.spring.cloud.azure}</version>
+             <type>pom</type>
+             <scope>import</scope>
+         </dependency>
         </dependencies>
+
+        
     </dependencyManagement>
 
     <build>
